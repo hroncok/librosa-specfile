@@ -1,4 +1,4 @@
-Name:           librosa
+Name:           python-librosa
 Version:        0.4.2
 Release:        1%{?dist}
 Summary:        A python package for music and audio analysis
@@ -12,6 +12,10 @@ BuildArch:      noarch
 
 BuildRequires:  python2-devel
 BuildRequires:  python3-devel
+BuildRequires:  python3-sphinx
+BuildRequires:  python3-sphinx_rtd_theme
+BuildRequires:  python3-numpydoc
+BuildRequires:  python3-matplotlib
 
 %description
 LibROSA is a python package for music and audio analysis.
@@ -20,6 +24,7 @@ information retrieval systems.
 
 %package -n python2-librosa
 Summary: A python package for music and audio analysis
+%{?python_provide:%python_provide python2-librosa}
 
 Requires:       python2-audioread
 Requires:       python2-numpy
@@ -37,6 +42,7 @@ information retrieval systems.
 
 %package -n python3-librosa
 Summary: A python package for music and audio analysis
+%{?python_provide:%python_provide python3-librosa}
 
 Requires:       python3-audioread
 Requires:       python3-numpy
@@ -59,6 +65,10 @@ information retrieval systems.
 # such file replace the line with nothing (if it's the 1st line).
 grep -ilrx librosa -e '#!/usr/bin/env python' --include '*.py'| xargs sed -i '1s\^#!/usr/bin/env python$\\'
 
+cd docs/
+make SPHINXBUILD=sphinx-build-3 man
+cd ..
+
 %build
 %py2_build
 %py3_build
@@ -67,15 +77,19 @@ grep -ilrx librosa -e '#!/usr/bin/env python' --include '*.py'| xargs sed -i '1s
 %py2_install
 %py3_install
 
+install -Dm644 docs/_build/man/librosa.1 -t %{buildroot}%{_mandir}/man1
+
 %files -n python2-librosa
 %doc README.md AUTHORS.md CHANGELOG.md CONTRIBUTING.md
 %license LICENSE.md
+%{_mandir}/man1/librosa.1*
 %{python2_sitelib}/librosa/
 %{python2_sitelib}/librosa-%{version}-py%{python2_version}.egg-info
 
 %files -n python3-librosa
 %doc README.md AUTHORS.md CHANGELOG.md CONTRIBUTING.md
 %license LICENSE.md
+%{_mandir}/man1/librosa.1*
 %{python3_sitelib}/librosa/
 %{python3_sitelib}/librosa-%{version}-py%{python3_version}.egg-info
 
