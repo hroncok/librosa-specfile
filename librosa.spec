@@ -13,6 +13,14 @@ BuildArch:      noarch
 BuildRequires:  python2-devel
 BuildRequires:  python3-devel
 
+%description
+LibROSA is a python package for music and audio analysis.
+It provides the building blocks necessary to create music
+information retrieval systems.
+
+%package -n python2-librosa
+Summary: A python package for music and audio analysis
+
 Requires:       python2-audioread
 Requires:       python2-numpy
 Requires:       python2-scipy
@@ -21,6 +29,14 @@ Requires:       python2-matplotlib
 Requires:       python2-joblib
 Requires:       python2-decorator
 Requires:       python2-six
+
+%description -n python2-librosa
+LibROSA is a python package for music and audio analysis.
+It provides the building blocks necessary to create music
+information retrieval systems.
+
+%package -n python3-librosa
+Summary: A python package for music and audio analysis
 
 Requires:       python3-audioread
 Requires:       python3-numpy
@@ -31,20 +47,6 @@ Requires:       python3-joblib
 Requires:       python3-decorator
 Requires:       python3-six
 
-%description
-LibROSA is a python package for music and audio analysis.
-It provides the building blocks necessary to create music
-information retrieval systems.
-
-%package -n python2-librosa
-Summary: Version for Python 2
-%description -n python2-librosa
-LibROSA is a python package for music and audio analysis.
-It provides the building blocks necessary to create music
-information retrieval systems.
-
-%package -n python3-librosa
-Summary: verion for Python 3
 %description -n python3-librosa
 LibROSA is a python package for music and audio analysis.
 It provides the building blocks necessary to create music
