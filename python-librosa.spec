@@ -1,12 +1,12 @@
+# The building of documentation takes quite long time. Please be patient. It is nothing to worry about.
+
 Name:           python-librosa
 Version:        0.4.2
 Release:        1%{?dist}
-Summary:        A python package for music and audio analysis
+Summary:        A Python package for music and audio analysis
 License:        ISC
 URL:            https://github.com/bmcfee/librosa
 Source0:        https://github.com/bmcfee/librosa/archive/0.4.2.tar.gz
-
-%define debug_package %{nil}
 
 BuildArch:      noarch
 
@@ -16,14 +16,15 @@ BuildRequires:  python3-sphinx
 BuildRequires:  python3-sphinx_rtd_theme
 BuildRequires:  python3-numpydoc
 BuildRequires:  python3-matplotlib
+BuildRequires:  python3-seaborn
 
 %description
-LibROSA is a python package for music and audio analysis.
+LibROSA is a Python package for music and audio analysis.
 It provides the building blocks necessary to create music
 information retrieval systems.
 
 %package -n python2-librosa
-Summary: A python package for music and audio analysis
+Summary: A Python 2 package for music and audio analysis
 %{?python_provide:%python_provide python2-librosa}
 
 Requires:       python2-audioread
@@ -36,12 +37,12 @@ Requires:       python2-decorator
 Requires:       python2-six
 
 %description -n python2-librosa
-LibROSA is a python package for music and audio analysis.
+LibROSA is a Python 2 package for music and audio analysis.
 It provides the building blocks necessary to create music
 information retrieval systems.
 
 %package -n python3-librosa
-Summary: A python package for music and audio analysis
+Summary: A Python 3 package for music and audio analysis
 %{?python_provide:%python_provide python3-librosa}
 
 Requires:       python3-audioread
@@ -54,7 +55,7 @@ Requires:       python3-decorator
 Requires:       python3-six
 
 %description -n python3-librosa
-LibROSA is a python package for music and audio analysis.
+LibROSA is a Python 3 package for music and audio analysis.
 It provides the building blocks necessary to create music
 information retrieval systems.
 
@@ -66,7 +67,7 @@ information retrieval systems.
 grep -ilrx librosa -e '#!/usr/bin/env python' --include '*.py'| xargs sed -i '1s\^#!/usr/bin/env python$\\'
 
 cd docs/
-make SPHINXBUILD=sphinx-build-3 man
+make SPHINXBUILD=sphinx-build-3 html
 cd ..
 
 %build
@@ -77,19 +78,17 @@ cd ..
 %py2_install
 %py3_install
 
-install -Dm644 docs/_build/man/librosa.1 -t %{buildroot}%{_mandir}/man1
-
 %files -n python2-librosa
 %doc README.md AUTHORS.md CHANGELOG.md CONTRIBUTING.md
 %license LICENSE.md
-%{_mandir}/man1/librosa.1*
+%doc docs/_build/html
 %{python2_sitelib}/librosa/
 %{python2_sitelib}/librosa-%{version}-py%{python2_version}.egg-info
 
 %files -n python3-librosa
 %doc README.md AUTHORS.md CHANGELOG.md CONTRIBUTING.md
 %license LICENSE.md
-%{_mandir}/man1/librosa.1*
+%doc docs/_build/html
 %{python3_sitelib}/librosa/
 %{python3_sitelib}/librosa-%{version}-py%{python3_version}.egg-info
 
