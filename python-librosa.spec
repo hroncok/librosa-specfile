@@ -4,7 +4,11 @@ Name:           python-librosa
 Version:        0.4.2
 Release:        1%{?dist}
 Summary:        A Python package for music and audio analysis
+
+# ISC is licence of package
+# CC-BY is licence of ogg file, which is installed by the package
 License:        ISC and CC-BY
+
 URL:            https://github.com/bmcfee/librosa
 Source0:        https://github.com/bmcfee/librosa/archive/%{version}.tar.gz
 
@@ -17,6 +21,7 @@ BuildRequires:  python3-sphinx_rtd_theme
 BuildRequires:  python3-numpydoc
 BuildRequires:  python3-matplotlib
 BuildRequires:  python3-seaborn
+BuildRequires:  python3-joblib
 
 %description
 LibROSA is a Python package for music and audio analysis.
@@ -106,5 +111,5 @@ cd ..
 %doc docs/_build/html
 
 %changelog
-* Fri Mar 18 2016 Dominika Krejci <dkrejci@redhat.com> - 0.4.2-1
+* Thu Mar 24 2016 Dominika Krejci <dkrejci@redhat.com> - 0.4.2-1
 - initial release
