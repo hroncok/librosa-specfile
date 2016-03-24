@@ -35,6 +35,7 @@ Requires:       python2-matplotlib
 Requires:       python2-joblib
 Requires:       python2-decorator
 Requires:       python2-six
+Suggest:        %{name}-doc = %{version}-%{release}
 
 %description -n python2-librosa
 LibROSA is a Python 2 package for music and audio analysis.
@@ -53,6 +54,7 @@ Requires:       python3-matplotlib
 Requires:       python3-joblib
 Requires:       python3-decorator
 Requires:       python3-six
+Suggest:        %{name}-doc = %{version}-%{release}
 
 %description -n python3-librosa
 LibROSA is a Python 3 package for music and audio analysis.
