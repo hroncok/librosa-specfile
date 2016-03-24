@@ -1,5 +1,3 @@
-# The building of documentation takes quite long time. Please be patient. It is nothing to worry about.
-
 Name:           python-librosa
 Version:        0.4.2
 Release:        1%{?dist}
@@ -40,7 +38,7 @@ Requires:       python2-matplotlib
 Requires:       python2-joblib
 Requires:       python2-decorator
 Requires:       python2-six
-Suggest:        %{name}-doc = %{version}-%{release}
+Suggests:        %{name}-doc = %{version}-%{release}
 
 %description -n python2-librosa
 LibROSA is a Python 2 package for music and audio analysis.
@@ -59,7 +57,7 @@ Requires:       python3-matplotlib
 Requires:       python3-joblib
 Requires:       python3-decorator
 Requires:       python3-six
-Suggest:        %{name}-doc = %{version}-%{release}
+Suggests:        %{name}-doc = %{version}-%{release}
 
 %description -n python3-librosa
 LibROSA is a Python 3 package for music and audio analysis.
@@ -81,6 +79,7 @@ to create music information retrieval systems.
 # such file replace the line with nothing (if it's the 1st line).
 grep -ilrx librosa -e '#!/usr/bin/env python' --include '*.py'| xargs sed -i '1s\^#!/usr/bin/env python$\\'
 
+# The building of documentation takes quite long time. Please be patient. It is nothing to worry about.
 cd docs/
 make SPHINXBUILD=sphinx-build-3 html
 cd ..
