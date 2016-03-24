@@ -4,9 +4,9 @@ Name:           python-librosa
 Version:        0.4.2
 Release:        1%{?dist}
 Summary:        A Python package for music and audio analysis
-License:        ISC
+License:        ISC and CC-BY
 URL:            https://github.com/bmcfee/librosa
-Source0:        https://github.com/bmcfee/librosa/archive/0.4.2.tar.gz
+Source0:        https://github.com/bmcfee/librosa/archive/%{version}.tar.gz
 
 BuildArch:      noarch
 
@@ -59,6 +59,14 @@ LibROSA is a Python 3 package for music and audio analysis.
 It provides the building blocks necessary to create music
 information retrieval systems.
 
+%package doc
+Summary: Documentation for python-librosa package
+
+%description doc
+Documentation for LibROSA, a Python package for music and
+audio analysis. It provides the building blocks necessary
+to create music information retrieval systems.
+
 %prep
 %setup -q -n librosa-%{version}
 
@@ -81,16 +89,19 @@ cd ..
 %files -n python2-librosa
 %doc README.md AUTHORS.md CHANGELOG.md CONTRIBUTING.md
 %license LICENSE.md
-%doc docs/_build/html
 %{python2_sitelib}/librosa/
 %{python2_sitelib}/librosa-%{version}-py%{python2_version}.egg-info
 
 %files -n python3-librosa
 %doc README.md AUTHORS.md CHANGELOG.md CONTRIBUTING.md
 %license LICENSE.md
-%doc docs/_build/html
 %{python3_sitelib}/librosa/
 %{python3_sitelib}/librosa-%{version}-py%{python3_version}.egg-info
+
+%files doc
+%doc README.md AUTHORS.md CHANGELOG.md CONTRIBUTING.md
+%license LICENSE.md
+%doc docs/_build/html
 
 %changelog
 * Fri Mar 18 2016 Dominika Krejci <dkrejci@redhat.com> - 0.4.2-1
